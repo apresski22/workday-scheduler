@@ -24,16 +24,42 @@ var dateDisplayEl = $("#currentDay");
 
 // for all projects, identify all <textarea> elements with class="description"
 //var projectDisplay = $("textarea.description");
+var parent = $(".time-block, .row").each(function () {
+  var key = $(this).attr("id");
+  var saved = localStorage.getItem(key);
+  console.log(saved);
 
-var input = $("#pastProject");
-//var input = document.getElementById("pastProject");
-
-//getItem saves but disappears after a couple of seconds when page reloads
-$(".saveBtn").on("click", function (saveProject) {
-  localStorage.setItem("pastProjectInput", input.val());
-  localStorage.getItem("pastProjectInput");
-  console.log(localStorage.getItem("pastProjectInput"));
+  //check the current time and add a classs to the parent element
+  //use dom traverlas to make the value uf the textarea the saved content
 });
+console.log(parent);
+
+// var parent = $(".time-block, .row").each(function () {
+//   var key = $(this).attr("id");
+//   var saved = localStorage.getItem(key);
+//   console.log(saved);
+
+//   //check the current time and add a classs to the parent element
+//   //use dom traverlas to make the value uf the textarea the saved content
+// });
+
+// keep project description displayed after page reload
+var parent = $("#description").each(function () {
+  var key = $(this).attr("id");
+  var saved = localStorage.getItem(key);
+  console.log(saved);
+
+  //check the current time and add a classs to the parent element
+  //use dom traverlas to make the value uf the textarea the saved content
+});
+
+$(".saveBtn").on("click", function (event) {
+  var key = $(this).parent().attr("id");
+  var value = $(this).siblings(".description").val();
+  localStorage.setItem(key, value);
+});
+
+//we need the key and whwere is the key?
 
 // $(".saveBtn").on("click", function (saveCurrentProject) {
 //   localStorage.setItem("currentProjectInput", input.val());
@@ -88,3 +114,4 @@ setInterval(displayDate, 0);
 
 //page displays project content on page load
 //readProjectsFromStorage();
+console.log("hello");
