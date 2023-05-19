@@ -1,22 +1,6 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-// server side API activity 3 for example
-
 var rootEl = $("#root");
-
 var dateDisplayEl = $("#currentDay");
-
-//create var for each hour element
-//var hour9El = $("")
-
-// TODO: Add a listener for click events on the save button. This code should
-// use the id in the containing time-block as a key to save the user input in
-// local storage. HINT: What does `this` reference in the click listener
-// function? How can DOM traversal be used to get the "hour-x" id of the
-// time-block containing the button that was clicked? How might the id be
-// useful when saving the description in local storage?
+var timeBlockEl = $(".time-block");
 
 //identify element where project text will appear
 
@@ -48,9 +32,6 @@ var parent = $("#description").each(function () {
   var key = $(this).attr("id");
   var saved = localStorage.getItem(key);
   console.log(saved);
-
-  //check the current time and add a classs to the parent element
-  //use dom traverlas to make the value uf the textarea the saved content
 });
 
 $(".saveBtn").on("click", function (event) {
@@ -58,41 +39,6 @@ $(".saveBtn").on("click", function (event) {
   var value = $(this).siblings(".description").val();
   localStorage.setItem(key, value);
 });
-
-//we need the key and whwere is the key?
-
-// $(".saveBtn").on("click", function (saveCurrentProject) {
-//   localStorage.setItem("currentProjectInput", input.val());
-//   localStorage.getItem("currentProjectInput");
-//   console.log(localStorage.getItem("currentProjectInput"));
-// });
-
-// can the buttonSaveEl be used for .present-button and .future-button too?
-//buttonSaveEl.on("click", ".past-button", savePastProject);
-//convert to jquery
-//$(".saveBtn").click(savePastProject);
-
-//
-// TODO: Add code to apply the past, present, or future class to each time
-// block by comparing the id to the current hour. HINTS: How can the id
-// attribute of each time-block be used to conditionally add or remove the
-// past, present, and future classes? How can Day.js be used to get the
-// current hour in 24-hour time?
-//
-// if (currentTime < date) {
-//   $("#time-block").css("background", "white");
-// if (currentTime > date) {
-//   $("#time-block").css("background", "green");
-// if (currentTime = date)
-//   $("#time-block").css("background", "red");
-// }
-
-// TODO: Add code to get any user input that was saved in localStorage and set
-// the values of the corresponding textarea elements. HINT: How can the id
-// attribute of each time-block be used to do this?
-
-// TODO: Add code to display the current date in the header of the page.
-//});
 
 function displayDate() {
   //event.preventDefault();
@@ -106,7 +52,99 @@ var past = present.subtract(1, "h");
 console.log(future);
 console.log(past);
 console.log(present);
+console.log(future.$H);
 
+var hour9 = $("#hour-9");
+var hour10 = $("#hour-10");
+var hour11 = $("#hour-11");
+var hour12 = $("#hour-12");
+var hour13 = $("#hour-13");
+var hour14 = $("#hour-14");
+var hour15 = $("#hour-15");
+var hour16 = $("#hour-16");
+var hour17 = $("#hour-17");
+
+var hourArray = {
+  hour9: 9,
+  hour10: 10,
+  hour11: 11,
+  hour12: 12,
+  hour13: 13,
+  hour14: 14,
+  hour15: 15,
+  hour16: 16,
+  hour17: 17,
+};
+
+console.log(hourArray.hour9);
+console.log();
+
+// hourArray.forEach(getHours);
+// function getHours(value) {
+//   console.log(value);
+// }
+if (future.$H > hourArray.hour9) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour9) {
+  $(".time-block").css("background-color", "purple");
+}
+
+if (future.$H > hourArray.hour10) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour10) {
+  $(".time-block").css("background-color", "purple");
+}
+
+if (future.$H > hourArray.hour11) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour11) {
+  $(".time-block").css("background-color", "purple");
+} 
+if (future.$H > hourArray.hour12) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour12) {
+  $(".time-block").css("background-color", "purple");
+} 
+
+if (future.$H > hourArray.hour13) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour13) {
+  $(".time-block").css("background-color", "purple");
+} 
+
+if (future.$H > hourArray.hour14) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour14) {
+  $(".time-block").css("background-color", "purple");
+} 
+
+if (future.$H > hourArray.hour15) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour15) {
+  $(".time-block").css("background-color", "purple");
+} 
+
+
+if (future.$H > hourArray.hour16) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour16) {
+  $(".time-block").css("background-color", "purple");
+}
+
+if (future.$H > hourArray.hour17) {
+  //iterate function for future.$H until hour-17
+  $(".time-block").css("background-color", "#77dd77");
+} else (past.$H > hourArray.hour17) {
+  $(".time-block").css("background-color", "purple");
+}
 displayDate;
 
 //find out what the interval time means
@@ -114,4 +152,3 @@ setInterval(displayDate, 0);
 
 //page displays project content on page load
 //readProjectsFromStorage();
-console.log("hello");
